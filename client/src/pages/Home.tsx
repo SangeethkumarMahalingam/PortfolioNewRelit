@@ -1,3 +1,4 @@
+import profileImg from "@/assets/profile.jpeg";
 import { useEffect, useMemo, useState } from "react";
 import { TopNav } from "@/components/TopNav";
 import { Section } from "@/components/Section";
@@ -56,7 +57,7 @@ export default function Home() {
   }, []);
 
   const onCopyEmail = async () => {
-    const email = (data.email || "").replace("mailto:", "");
+    const email = data.email || "";
     if (!email) {
       toast({
         title: "Email not set",
@@ -83,6 +84,12 @@ export default function Home() {
     }
   };
 
+  const onSendEmail = () => {
+    const email = data.email || "";
+    if (!email) return;
+    window.location.href = `mailto:${email}`;
+  };
+
   const onSubmitContact = (e: React.FormEvent) => {
     e.preventDefault();
     if (!contact.name.trim() || !contact.email.trim() || !contact.message.trim()) {
@@ -93,10 +100,15 @@ export default function Home() {
       });
       return;
     }
+    
+    // Construct mailto link
+    const subject = encodeURIComponent(`Message from ${contact.name}`);
+    const body = encodeURIComponent(contact.message);
+    window.location.href = `mailto:${data.email}?subject=${subject}&body=${body}`;
+    
     toast({
-      title: "Message drafted",
-      description:
-        "No backend is configured. Wire this to an email service when ready.",
+      title: "Opening email client",
+      description: "Redirecting to your email app...",
     });
     setContact({ name: "", email: "", message: "" });
   };
@@ -192,12 +204,8 @@ export default function Home() {
                       </div>
 
                       <div className="h-16 w-16 rounded-2xl bg-card ring-soft shadow-soft overflow-hidden">
-                        {/* Retain existing profile photo used on old website:
-                            If your existing photo is in public, replace src with the correct path.
-                            Example: src="/profile.jpg"
-                         */}
                         <img
-                          src="/favicon.png"
+                          src={profileImg}
                           alt="Profile"
                           className="h-full w-full object-cover"
                         />
@@ -332,10 +340,7 @@ export default function Home() {
                         <div className="min-w-0">
                           <div className="text-sm font-semibold">Email</div>
                           <div className="text-xs text-muted-foreground truncate">
-                            {(data.email || "mailto:your-email@example.com").replace(
-                              "mailto:",
-                              "",
-                            )}
+                            {data.email}
                           </div>
                         </div>
                         <div className="ml-auto text-xs font-semibold text-muted-foreground">
@@ -346,32 +351,21 @@ export default function Home() {
 
                     <button
                       type="button"
-                      onClick={() => {
-                        if (!data.phone) {
-                          toast({
-                            title: "Phone not set",
-                            description:
-                              "Update the phone in client/src/hooks/use-portfolio.ts.",
-                            variant: "destructive",
-                          });
-                          return;
-                        }
-                        window.location.href = data.phone;
-                      }}
+                      onClick={onSendEmail}
                       className="w-full rounded-2xl border border-border/70 bg-background/60 hover:bg-muted/70 transition-all duration-200 p-4 text-left focus-ring"
                     >
                       <div className="flex items-center gap-3">
                         <div className="h-10 w-10 rounded-2xl bg-card ring-soft grid place-items-center">
-                          <Phone className="h-4 w-4 text-accent" />
+                          <Mail className="h-4 w-4 text-accent" />
                         </div>
                         <div className="min-w-0">
-                          <div className="text-sm font-semibold">Phone</div>
+                          <div className="text-sm font-semibold">Send Email</div>
                           <div className="text-xs text-muted-foreground truncate">
-                            {data.phone ? data.phone.replace("tel:", "") : "+91 00000 00000"}
+                            Direct message
                           </div>
                         </div>
                         <div className="ml-auto text-xs font-semibold text-muted-foreground">
-                          Call
+                          Send
                         </div>
                       </div>
                     </button>

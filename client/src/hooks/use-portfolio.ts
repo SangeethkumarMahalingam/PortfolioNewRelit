@@ -44,8 +44,8 @@ export function usePortfolioData() {
     subheadline:
       "Built on a strong web development foundation (Angular, TypeScript), now focused on interactive XR systems—clean UX, purposeful motion, and production-ready Unity pipelines.",
     location: "India",
-    email: "mailto:your-email@example.com",
-    phone: "tel:+910000000000",
+    email: "sangeethkumarMahalingam@outlook.com",
+    phone: "",
     links: [
       { label: "GitHub", href: "https://github.com/" },
       { label: "LinkedIn", href: "https://www.linkedin.com/" },
