@@ -203,7 +203,7 @@ export default function Home() {
                         </div>
                       </div>
 
-                      <div className="h-16 w-16 rounded-2xl bg-card ring-soft shadow-soft overflow-hidden">
+                      <div className="h-24 w-24 rounded-2xl bg-card ring-soft shadow-soft overflow-hidden">
                         <img
                           src={profileImg}
                           alt="Profile"
@@ -212,33 +212,15 @@ export default function Home() {
                       </div>
                     </div>
 
-                    <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div className="mt-6 space-y-4">
                       <div className="rounded-2xl bg-background/60 ring-soft p-4">
                         <div className="text-xs font-semibold tracking-[0.22em] uppercase text-muted-foreground">
-                          Focus
+                          About Me
                         </div>
                         <div className="mt-2 text-sm leading-relaxed text-foreground/90">
-                          Immersive labs, guided simulations, interaction systems, and deployment-ready builds.
+                          {data.subheadline}
                         </div>
                       </div>
-                      <div className="rounded-2xl bg-background/60 ring-soft p-4">
-                        <div className="text-xs font-semibold tracking-[0.22em] uppercase text-muted-foreground">
-                          Strength
-                        </div>
-                        <div className="mt-2 text-sm leading-relaxed text-foreground/90">
-                          UI clarity—first in the browser, now in 3D spaces.
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="mt-4 rounded-2xl bg-background/60 ring-soft p-4">
-                      <div className="flex items-center gap-2 text-sm font-semibold">
-                        <Code2 className="h-4 w-4 text-accent" />
-                        Web foundation → immersive systems
-                      </div>
-                      <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
-                        I started by building robust, user-friendly dashboards and interfaces—then applied the same discipline to spatial UX and XR workflows.
-                      </p>
                     </div>
                   </div>
                 </div>
@@ -309,6 +291,7 @@ export default function Home() {
                   highlights={p.highlights}
                   stack={p.stack}
                   status={p.status}
+                  demoUrl={p.demoUrl}
                 />
               ))}
             </div>
@@ -345,27 +328,6 @@ export default function Home() {
                         </div>
                         <div className="ml-auto text-xs font-semibold text-muted-foreground">
                           {copied ? "Copied" : "Copy"}
-                        </div>
-                      </div>
-                    </button>
-
-                    <button
-                      type="button"
-                      onClick={onSendEmail}
-                      className="w-full rounded-2xl border border-border/70 bg-background/60 hover:bg-muted/70 transition-all duration-200 p-4 text-left focus-ring"
-                    >
-                      <div className="flex items-center gap-3">
-                        <div className="h-10 w-10 rounded-2xl bg-card ring-soft grid place-items-center">
-                          <Mail className="h-4 w-4 text-accent" />
-                        </div>
-                        <div className="min-w-0">
-                          <div className="text-sm font-semibold">Send Email</div>
-                          <div className="text-xs text-muted-foreground truncate">
-                            Direct message
-                          </div>
-                        </div>
-                        <div className="ml-auto text-xs font-semibold text-muted-foreground">
-                          Send
                         </div>
                       </div>
                     </button>
@@ -475,23 +437,6 @@ export default function Home() {
                   </div>
                 </form>
               </div>
-            </div>
-
-            <div className="mt-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 rounded-3xl bg-card border border-border/70 shadow-soft p-6">
-              <div>
-                <div className="font-display text-xl font-bold leading-tight">
-                  Prefer a quick scan?
-                </div>
-                <div className="mt-1 text-sm text-muted-foreground">
-                  Download the updated resume and keep it handy.
-                </div>
-              </div>
-              <Button
-                className="rounded-xl shadow-soft hover:shadow-lift transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0"
-                onClick={() => window.open(data.resumeHref, "_blank")}
-              >
-                Download Resume
-              </Button>
             </div>
           </Section>
 

@@ -11,6 +11,7 @@ export function ProjectCard({
   highlights,
   stack,
   status,
+  demoUrl,
 }: {
   title: string;
   category: "XR" | "Web" | "System";
@@ -18,6 +19,7 @@ export function ProjectCard({
   highlights: string[];
   stack: string[];
   status?: string;
+  demoUrl?: string;
 }) {
   const [expanded, setExpanded] = useState(false);
 
@@ -117,6 +119,19 @@ export function ProjectCard({
                   </Badge>
                 ))}
               </div>
+
+              {demoUrl && (
+                <div className="mt-4">
+                  <Button
+                    size="sm"
+                    className="rounded-xl shadow-soft hover:shadow-lift transition-all duration-300 w-full sm:w-auto"
+                    onClick={() => window.open(demoUrl, "_blank")}
+                  >
+                    <Sparkles className="mr-2 h-4 w-4" />
+                    View Demo
+                  </Button>
+                </div>
+              )}
             </div>
           </div>
         </div>

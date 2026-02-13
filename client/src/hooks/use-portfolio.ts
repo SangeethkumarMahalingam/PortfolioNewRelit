@@ -21,6 +21,7 @@ export type Project = {
   highlights: string[];
   stack: string[];
   status?: "Shipped" | "In progress" | "Prototype";
+  demoUrl?: string;
 };
 
 export type Portfolio = {
@@ -42,13 +43,13 @@ export function usePortfolioData() {
     name: "Sangeethkumar",
     headline: "XR Developer crafting immersive learning & simulation experiences.",
     subheadline:
-      "Built on a strong web development foundation (Angular, TypeScript), now focused on interactive XR systems—clean UX, purposeful motion, and production-ready Unity pipelines.",
+      "Motivated and aspiring Software Engineer with a strong foundation in web technologies. Passionate about 3D modeling and VR app development, with experience in building responsive web applications through academic and personal projects. Equipped with excellent problem-solving skills and a proactive learning attitude, eager to tackle real-world challenges.",
     location: "India",
     email: "sangeethkumarMahalingam@outlook.com",
     phone: "",
     links: [
-      { label: "GitHub", href: "https://github.com/" },
-      { label: "LinkedIn", href: "https://www.linkedin.com/" },
+      { label: "LinkedIn", href: "https://www.linkedin.com/in/sangeethkumar-m-link" },
+      { label: "Instagram", href: "https://www.instagram.com/__golden_cube_" },
     ],
     resumeHref: "/Sangeethkumar_Resume_1770881056253.pdf",
     skillGroups: [
@@ -106,6 +107,7 @@ export function usePortfolioData() {
         title: "VR Escape Room",
         category: "XR",
         status: "Prototype",
+        demoUrl: "https://www.youtube.com/watch?v=vApsPOnttlk",
         summary:
           "An adaptive VR escape experience tuned to user mental states such as stress and anxiety—changing pacing, cues, and challenge to keep the experience engaging and supportive.",
         highlights: [
@@ -118,6 +120,7 @@ export function usePortfolioData() {
         title: "Virtual Reality Shopping",
         category: "XR",
         status: "In progress",
+        demoUrl: "https://www.youtube.com/watch?v=2WY3tAgzLu8",
         summary:
           "A VR simulation of real-world shopping interactions—browsing, selecting, comparing, and checking out within an immersive environment.",
         highlights: [
@@ -125,6 +128,19 @@ export function usePortfolioData() {
           "Environment animation logic for responsive, lifelike retail scenarios.",
         ],
         stack: ["Unity", "C#", "OpenXR", "Meta SDK"],
+      },
+      {
+        title: "Cuba Game",
+        category: "XR",
+        status: "Shipped",
+        demoUrl: "https://www.youtube.com/watch?v=ZvDJIbTyPLQ",
+        summary:
+          "Designed and developed a 3D cube navigation game with interactive mechanics, integrating Unity’s physics engine to ensure smooth gameplay.",
+        highlights: [
+          "3D cube navigation mechanics.",
+          "Physics engine integration for smooth movement.",
+        ],
+        stack: ["Unity", "C#"],
       },
       {
         title: "IQAS Dashboard",
